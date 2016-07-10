@@ -1,6 +1,8 @@
 eclipse.preferences.version=1
 encoding//src/main/java/cn/org/j2ee/excel/common/DynamicBean.java=UTF-8
 encoding//src/main/java/cn/org/j2ee/excel/common/ExportConfig.java=UTF-8
+encoding//src/main/java/cn/org/j2ee/excel/model/TbAccountInfoModel.java=UTF-8
 encoding//src/main/java/cn/org/j2ee/excel/web/controller/TbAccountInfoController.java=UTF-8
 encoding//src/main/resources/log4j.properties=UTF-8
 encoding//src/main/webapp/index.jsp=UTF-8
+encoding/README.md=UTF-8
