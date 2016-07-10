@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--@DateTime: 2016-7-10 08:46:43, @Author: wuwz@live.com-->
+<mapper namespace="cn.org.j2ee.excel.dao.TbAccountInfoDao">
+
+	<!-- EntityResultMap: 实体与数据库的简单映射  -->
+	<resultMap id="EntityResultMap" type="cn.org.j2ee.excel.model.TbAccountInfoModel">
+		<result column="uuid" property="uuid" />	<!--//.唯一标识 -->
+		<result column="username" property="username" />	<!--//.用户名 -->
+		<result column="password" property="password" />	<!--//.密码 -->
+		<result column="nickname" property="nickname" />	<!--//.昵称 -->
+		<result column="email" property="email" />	<!--//.邮箱 -->
+		<result column="phone" property="phone" />	<!--//.手机号 -->
+		<result column="QQ" property="QQ" />	<!--//.QQ号 -->
+		<result column="address" property="address" />	<!--//.地址 -->
+		<result column="createDate" property="createDate" />	<!--//.创建日期 -->
+		<result column="remark" property="remark" />	<!--//.备注 -->
+	</resultMap>
+	
+	<!-- DbColumnList: 数据库列 -->
+	<sql id="DbColumnList">
+		uuid, username, password, nickname, email, phone, QQ, address, createDate, remark
+	</sql>
+	
+	<!-- WhereClause: 动态查询条件 -->
+	<sql id="WhereClause">
+		WHERE 1=1
+		<trim suffixOverrides=",">
+							
+			<if test="uuid != null and uuid != ''">
+				AND uuid = #{uuid}
+			</if>
+							
+			<if test="username != null and username != ''">
+				AND username = #{username}
+			</if>
+							
+			<if test="password != null and password != ''">
+				AND password = #{password}
+			</if>
+							
+			<if test="nickname != null and nickname != ''">
+				AND nickname = #{nickname}
+			</if>
+							
+			<if test="email != null and email != ''">
+				AND email = #{email}
+			</if>
+							
+			<if test="phone != null and phone != ''">
+				AND phone = #{phone}
+			</if>
+							
+			<if test="QQ != null and QQ != ''">
+				AND QQ = #{QQ}
+			</if>
+							
+			<if test="address != null and address != ''">
+				AND address = #{address}
+			</if>
+							
+			<if test="createDate != null and createDate != ''">
+				AND createDate = #{createDate}
+			</if>
+							
+			<if test="remark != null and remark != ''">
+				AND remark = #{remark}
+			</if>
+				
+		</trim>
+	</sql>
+	
+	
+	<!-- 插入记录 -->
+	<insert id="save" parameterType="cn.org.j2ee.excel.model.TbAccountInfoModel" useGeneratedKeys="true" keyProperty="uuid">
+		INSERT INTO tb_account_info(uuid, username, password, nickname, email, phone, QQ, address, createDate, remark) VALUES(#{uuid}, #{username}, #{password}, #{nickname}, #{email}, #{phone}, #{QQ}, #{address}, #{createDate}, #{remark})
+	</insert>
+
+	<!-- 根据id，修改记录 -->
+	<update id="update" parameterType="cn.org.j2ee.excel.model.TbAccountInfoModel">
+		UPDATE tb_account_info SET uuid = #{uuid}, username = #{username}, password = #{password}, nickname = #{nickname}, email = #{email}, phone = #{phone}, QQ = #{QQ}, address = #{address}, createDate = #{createDate}, remark = #{remark} WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 修改记录，只修改只不为空的字段 -->
+	<update id="updateBySelective" parameterType="cn.org.j2ee.excel.model.TbAccountInfoModel">
+		UPDATE tb_account_info SET 
+		<trim suffixOverrides="," >
+			<if test="username != null">
+				username = #{username},
+			</if>
+			<if test="password != null">
+				password = #{password},
+			</if>
+			<if test="nickname != null">
+				nickname = #{nickname},
+			</if>
+			<if test="email != null">
+				email = #{email},
+			</if>
+			<if test="phone != null">
+				phone = #{phone},
+			</if>
+			<if test="QQ != null">
+				QQ = #{QQ},
+			</if>
+			<if test="address != null">
+				address = #{address},
+			</if>
+			<if test="createDate != null ">
+				createDate = #{createDate},
+			</if>
+			<if test="remark != null">
+				remark = #{remark},
+			</if>
+		</trim>
+		WHERE uuid = #{uuid}
+	</update>
+
+	<!-- 删除记录 -->
+	<delete id="delete" parameterType="java.lang.String">
+		DELETE FROM tb_account_info WHERE uuid = #{uuid}
+	</delete>
+
+	<!-- 根据id查询 账号信息 -->
+	<select id="getById" resultMap="EntityResultMap" parameterType="java.lang.String">
+		SELECT <include refid="DbColumnList" /> 
+		FROM tb_account_info WHERE uuid = #{uuid}	 LIMIT 1
+	</select>
+	
+	<!-- 获取所有 账号信息 -->
+	<select id="getAll" resultMap="EntityResultMap">
+		SELECT <include refid="DbColumnList" />
+		FROM tb_account_info
+	</select>
+	
+</mapper>   
