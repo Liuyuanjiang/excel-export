@@ -12,7 +12,7 @@
 
     public class UserModel extends DefaultAllowExport<UserModel> { //.. }
 
-1. 为该实体可以导出的字段配置`@ExcelConfig`注解：
+2. 为该实体可以导出的字段配置`@ExcelConfig`注解：
  
 > （用于定制列名，列宽等属性）
 
