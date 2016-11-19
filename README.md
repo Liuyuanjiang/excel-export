@@ -1,8 +1,11 @@
 # excel-export #
 ####基于java注解的Excel导出工具，可以灵活定制导出的列，包括列名，列宽等等;####
 
-
 ----------
+
+### 效果截图 ###
+![image](https://github.com/wuwz/excel-export/blob/master/demo.png)
+![image](https://github.com/wuwz/excel-export/blob/master/demo2.png)
 
 
 ### 使用例子 ###
